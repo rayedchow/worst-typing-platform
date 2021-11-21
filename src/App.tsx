@@ -8,21 +8,22 @@ const App: React.FC = () => {
 		const letters = 'hello amogus susy'.split('');
 		const data: TextData[] = [];
 
-		for(const letter of letters) {
+		for(let i = 0; i < letters.length; i++) {
 			data.push({
+				index: i,
 				state: 0,
-				letter
+				letter: letters[i]
 			});
 		}
 
-		console.log(data);
 		return data;
 	}
 
 	const [textData, setTextData] = useState(getDefaultTextData());
+	const [currIndex, setCurrIndex] = useState(0);
 
 	const test = (e: KeyboardEvent) => {
-		console.log(e.key);
+		setCurrIndex(currIndex+1);
 	}
 
 	useEffect(() => {
@@ -39,11 +40,9 @@ const App: React.FC = () => {
 
 			<div className="content">
 				<div className="words">
-					<span id="caret">
-						|
-					</span>
+					<span id="caret" style={{left: currIndex*1}}>|</span>
 					{textData.map(data => 
-						{data.letter}
+						<span className={`state-${data.state}`}>{data.letter}</span>
 					)}
 				</div>
 			</div>

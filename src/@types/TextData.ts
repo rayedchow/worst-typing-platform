@@ -1,4 +1,5 @@
 export interface TextData {
-	state: number,
+	index: number
+	state: number
 	letter: string
 }
