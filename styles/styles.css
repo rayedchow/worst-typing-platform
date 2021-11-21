@@ -34,15 +34,22 @@ body {
 .words {
 	font-family: 'PT Mono', monospace;
 	font-size: 2vw;
-	opacity: 50%;
 }
 
 #caret {
 	color: #F3F9FF;
 	font-size: 2.5vw;
-	position: absolute;
 }
 
 .state-0 {
-	color: #C5D1E6;
+	opacity: 50%;
+}
+
+.state-1 {
+	opacity: 100%;
+}
+
+.state-2 {
+	opacity: 100%;
+	color: red;
 }
