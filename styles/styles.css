@@ -37,8 +37,13 @@ body {
 }
 
 #caret {
-	color: #F3F9FF;
-	font-size: 2.5vw;
+	/* color: #F3F9FF;
+	font-size: 2.5vw; */
+	position: relative;
+	left: 0px;
+	padding: 2vh .1vw 2vh .1vw;
+	background-color: #F3F9FF;
+	border-radius: 25%;
 }
 
 .state-0 {
