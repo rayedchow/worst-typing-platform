@@ -26,7 +26,7 @@ const renderData = () => {
 		// if(currIndex == data.index) {
 		// 	elementData.push('<span id="caret"></span>');
 		// }
-		elementData.push(`<span class="words state-${data.state}">${data.letter}</span>`);
+		elementData.push(`<span class="words state-${data.state}" id="ind-${data.index}">${data.letter}</span>`);
 	}
 	$(".words").html(elementData.join(""));
 	// $(".words").html('<span id="caret">|</span>'+`<span class="words state-0">${text}</span>`);
@@ -39,9 +39,9 @@ const onKeyPress = e => {
 	textData[currIndex].state = 1;
 	currIndex++;
 	// $("#caret").css('right', `${currIndex*300}px`);
-	document.getElementById("caret").style.right = currIndex;
-	console.log(`${currIndex*300}px`)
-	renderData();
+	// document.getElementById("caret").style.right = currIndex;
+	// console.log(`${currIndex*300}px`)
+	// renderData();
 }
 
 document.addEventListener("keyup", onKeyPress);
