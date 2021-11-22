@@ -58,3 +58,7 @@ body {
 	opacity: 100%;
 	color: red;
 }
+
+.state-curr {
+	text-decoration: underline;
+}
