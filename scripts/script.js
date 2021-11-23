@@ -35,8 +35,10 @@ const onKeyPress = e => {
 		document.getElementById(`ind-${currIndex}`).classList.replace("state-0", "state-2");
 	
 	document.getElementById(`ind-${currIndex}`).classList.remove("state-curr");
-	currIndex++;
-	document.getElementById(`ind-${currIndex}`).classList.add("state-curr");
+	if(currIndex+1 < text.length) {
+		currIndex++;
+		document.getElementById(`ind-${currIndex}`).classList.add("state-curr");
+	}
 }
 
 document.addEventListener("keyup", onKeyPress);
