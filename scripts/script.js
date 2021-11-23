@@ -1,6 +1,7 @@
 let currIndex = 0;
 const text = 'hello test test amogus';
 const testData = {
+	test: 1,
 	total: text.length,
 	typed: 0,
 	correct: 0,
@@ -28,7 +29,6 @@ const onKeyPress = e => {
 	const currElem = document.getElementById(`ind-${currIndex}`);
 
 	if(code === 'Backspace' && currIndex > 0) {
-		console.log('hello');
 		currElem.classList.remove("state-curr");
 		currIndex--;
 		testData.typed--;
@@ -58,6 +58,7 @@ const onKeyPress = e => {
 		document.getElementById(`ind-${currIndex}`).classList.add("state-curr");
 	}
 	testData.typed++;
+	// if(testData.typed === 1)
 }
 
 document.addEventListener("keyup", onKeyPress);
