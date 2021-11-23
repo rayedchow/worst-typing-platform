@@ -66,4 +66,6 @@ body {
 
 .state-curr {
 	text-decoration: underline;
+	text-decoration-color: #3498db;
+	text-decoration-thickness: 5px;
 }
