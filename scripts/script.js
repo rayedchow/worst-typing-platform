@@ -10,15 +10,14 @@ const renderData = () => {
 		elementData.push(`<span class="words state-0" id="ind-${i}">${letters[i]}</span>`);
 	}
 
-	$(".words").html(elementData.join(""));
+	document.getElementById("words-parent").innerHTML = elementData.join("");
 }
 
 const onKeyPress = e => {
 	const key = e.code;
 
-	if(key !== 'Backspace' && !key.includes("Key")) return;
+	if(key !== 'Backspace' && key !== 'Space' && !key.includes("Key")) return;
 	if(currIndex+1 > text.length) return;
-	console.log(key);
 
 	document.getElementById(`ind-${currIndex}`).classList.replace("state-0", "state-1");
 	document.getElementById(`ind-${currIndex}`).classList.remove("state-curr");
