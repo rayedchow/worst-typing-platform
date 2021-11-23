@@ -61,7 +61,7 @@ body {
 
 .state-2 {
 	opacity: 100%;
-	color: red;
+	background-color: #e74c3c;
 }
 
 .state-curr {

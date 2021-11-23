@@ -14,12 +14,16 @@ const renderData = () => {
 }
 
 const onKeyPress = e => {
-	const key = e.code;
+	const code = e.code;
 
-	if(key !== 'Backspace' && key !== 'Space' && !key.includes("Key")) return;
+	if(code !== 'Backspace' && code !== 'Space' && !code.includes("Key")) return;
 	if(currIndex+1 > text.length) return;
-
-	document.getElementById(`ind-${currIndex}`).classList.replace("state-0", "state-1");
+	
+	if(e.key === text[currIndex])
+		document.getElementById(`ind-${currIndex}`).classList.replace("state-0", "state-1");
+	else
+		document.getElementById(`ind-${currIndex}`).classList.replace("state-0", "state-2");
+	
 	document.getElementById(`ind-${currIndex}`).classList.remove("state-curr");
 	currIndex++;
 	document.getElementById(`ind-${currIndex}`).classList.add("state-curr");
