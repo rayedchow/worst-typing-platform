@@ -1,5 +1,11 @@
 let currIndex = 0;
 const text = 'hello test test amogus';
+const testData = {
+	total: text.length,
+	typed: 0,
+	correct: 0,
+	wrong: 0
+};
 
 const renderData = () => {
 
@@ -19,26 +25,39 @@ const onKeyPress = e => {
 	if(code !== 'Backspace' && code !== 'Space' && !code.includes("Key")) return;
 	if(currIndex >= text.length) return;
 
+	const currElem = document.getElementById(`ind-${currIndex}`);
+
 	if(code === 'Backspace' && currIndex > 0) {
 		console.log('hello');
-		document.getElementById(`ind-${currIndex}`).classList.remove("state-curr");
+		currElem.classList.remove("state-curr");
 		currIndex--;
-		document.getElementById(`ind-${currIndex}`).classList.add("state-curr");
-		document.getElementById(`ind-${currIndex}`).classList.replace("state-1", "state-0");
-		document.getElementById(`ind-${currIndex}`).classList.replace("state-2", "state-0");
+		testData.typed--;
+		currElem.classList.add("state-curr");
+		if(currElem.classList.contains("state-1")) {
+			currElem.classList.replace("state-1", "state-0");
+			testData.correct--;
+		} else {
+			currElem.classList.replace("state-2", "state-0");
+			testData.wrong--;
+		}
 		return;
 	}
 	
-	if(e.key === text[currIndex])
+	if(e.key === text[currIndex]) {
 		document.getElementById(`ind-${currIndex}`).classList.replace("state-0", "state-1");
-	else
+		testData.correct++;
+	}
+	else {
 		document.getElementById(`ind-${currIndex}`).classList.replace("state-0", "state-2");
+		testData.wrong++;
+	}
 	
 	document.getElementById(`ind-${currIndex}`).classList.remove("state-curr");
 	if(currIndex+1 < text.length) {
 		currIndex++;
 		document.getElementById(`ind-${currIndex}`).classList.add("state-curr");
 	}
+	testData.typed++;
 }
 
 document.addEventListener("keyup", onKeyPress);
