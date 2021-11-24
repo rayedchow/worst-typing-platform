@@ -14,6 +14,9 @@ body {
 
 .header {
 	margin: 2vh 0 0 2vw;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .logo {
@@ -22,6 +25,13 @@ body {
 	/* background-image: linear-gradient(90deg, red, blue); */
 	/* background-clip: text; */
 	/* color: transparent; */
+}
+
+#time-left {
+	font-family: 'PT Mono', monospace;
+	font-size: 2.5vw;
+	opacity: 80%;
+	margin-right: 3vw;
 }
 
 .content {

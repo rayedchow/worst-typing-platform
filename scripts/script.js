@@ -1,7 +1,8 @@
 let currIndex = 0;
 const text = 'hello test test amogus';
 const testData = {
-	test: 1,
+	testStarted: false,
+	totalTime: 30,
 	total: text.length,
 	typed: 0,
 	correct: 0,
@@ -26,13 +27,14 @@ const onKeyPress = e => {
 	if(code !== 'Backspace' && code !== 'Space' && !code.includes("Key")) return;
 	if(currIndex >= text.length) return;
 
-	const currElem = document.getElementById(`ind-${currIndex}`);
+	let currElem = document.getElementById(`ind-${currIndex}`);
 
 	if(code === 'Backspace' && currIndex > 0) {
 		currElem.classList.remove("state-curr");
 		currIndex--;
+		currElem = document.getElementById(`ind-${currIndex}`);
 		testData.typed--;
-		currElem.classList.add("state-curr");
+		document.getElementById(`ind-${currIndex}`).classList.add("state-curr");
 		if(currElem.classList.contains("state-1")) {
 			currElem.classList.replace("state-1", "state-0");
 			testData.correct--;
@@ -58,7 +60,20 @@ const onKeyPress = e => {
 		document.getElementById(`ind-${currIndex}`).classList.add("state-curr");
 	}
 	testData.typed++;
-	// if(testData.typed === 1)
+	if(!testData.testStarted) startTimer();
+}
+
+const startTimer = () => {
+	testData.testStarted = true;
+	let timeLeft = testData.totalTime;
+	const timerInterval = setInterval(() => {
+		if(timeLeft === 0) {
+			clearInterval(timerInterval);
+			console.log(testData);
+		}
+		timeLeft--;
+		console.log(`${timeLeft}s`);
+	}, 1000);
 }
 
 document.addEventListener("keyup", onKeyPress);
