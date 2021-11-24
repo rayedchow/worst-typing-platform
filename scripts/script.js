@@ -2,7 +2,7 @@ let currIndex = 0;
 const text = 'hello test test amogus';
 const testData = {
 	testStarted: false,
-	totalTime: 30,
+	totalTime: 15,
 	total: text.length,
 	typed: 0,
 	correct: 0,
@@ -70,9 +70,11 @@ const startTimer = () => {
 		if(timeLeft === 0) {
 			clearInterval(timerInterval);
 			console.log(testData);
+			return;
 		}
 		timeLeft--;
-		console.log(`${timeLeft}s`);
+		document.getElementById("time-left").innerHTML = `${timeLeft}s`;
+		// console.log(`${timeLeft}s`);
 	}, 1000);
 }
 
