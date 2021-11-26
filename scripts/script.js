@@ -29,7 +29,8 @@ const onKeyPress = e => {
 
 	let currElem = document.getElementById(`ind-${currIndex}`);
 
-	if(code === 'Backspace' && currIndex > 0) {
+	if(code === 'Backspace') {
+		if(currIndex<1) return;
 		currElem.classList.remove("state-curr");
 		currIndex--;
 		currElem = document.getElementById(`ind-${currIndex}`);
@@ -74,9 +75,8 @@ const startTimer = () => {
 		}
 		timeLeft--;
 		document.getElementById("time-left").innerHTML = `${timeLeft}s`;
-		// console.log(`${timeLeft}s`);
 	}, 1000);
 }
 
-document.addEventListener("keyup", onKeyPress);
+document.addEventListener("keydown", onKeyPress);
 renderData();
