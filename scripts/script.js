@@ -2,7 +2,7 @@ let currIndex = 0;
 const text = 'hello test test amogus';
 const testData = {
 	testStarted: false,
-	totalTime: 15,
+	totalTime: 10,
 	total: text.length,
 	typed: 0,
 	correct: 0,
@@ -19,6 +19,7 @@ const renderData = () => {
 	}
 
 	document.getElementById("words-parent").innerHTML = elementData.join("");
+	document.getElementById("time-left").innerText = `${testData.totalTime}s`;
 }
 
 const onKeyPress = e => {
@@ -30,7 +31,8 @@ const onKeyPress = e => {
 	let currElem = document.getElementById(`ind-${currIndex}`);
 
 	if(code === 'Backspace') {
-		if(currIndex<1) return;
+		console.log(`CURR INDEX: ${currIndex}`);
+		// if(currIndex<1 || currIndex===text.length) return;
 		currElem.classList.remove("state-curr");
 		currIndex--;
 		currElem = document.getElementById(`ind-${currIndex}`);
@@ -56,9 +58,9 @@ const onKeyPress = e => {
 	}
 	
 	document.getElementById(`ind-${currIndex}`).classList.remove("state-curr");
-	if(currIndex+1 < text.length) {
+	if(currIndex < text.length) {
 		currIndex++;
-		document.getElementById(`ind-${currIndex}`).classList.add("state-curr");
+		if(currIndex < text.length) document.getElementById(`ind-${currIndex}`).classList.add("state-curr");
 	}
 	testData.typed++;
 	if(!testData.testStarted) startTimer();
@@ -74,7 +76,7 @@ const startTimer = () => {
 			return;
 		}
 		timeLeft--;
-		document.getElementById("time-left").innerHTML = `${timeLeft}s`;
+		document.getElementById("time-left").innerText = `${timeLeft}s`;
 	}, 1000);
 }
 
