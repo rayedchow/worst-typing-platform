@@ -4,7 +4,7 @@ const foreignLanguage = ['spanish', 'french', 'dutch', 'danish', 'irish', 'itali
 const _ = require('underscore');
 
 router.get('/getLanguageData', (req, res) => {
-	const { level } = req.params;
+	const { level } = req.query;
 	try {
 		let lang = (languageRanking.length > level) ? languageRanking[level] : `foreign/${_.sample(foreignLanguage)}`;
 		const data = require(`../languageData/${lang}.json`);
