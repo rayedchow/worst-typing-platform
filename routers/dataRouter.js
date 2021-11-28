@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const languageRanking = ['english', 'english_5k', 'english_25k', 'english_450k'];
 
-router.post('/getLanguageData', (req, res) => {
-	const { level } = req.body;
+router.get('/getLanguageData', (req, res) => {
+	const { level } = req.params;
 	try {
 		const data = require(`../languageData/${languageRanking[level]}.json`);
 		return res.json({
