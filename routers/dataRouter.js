@@ -11,7 +11,7 @@ router.get('/getLanguageData', (req, res) => {
 		const randWords = [];
 
 		for(let i = 0; i < amount; i++) {
-			randWords.push(_.sample(data));
+			randWords.push(_.sample(data.words));
 		}
 
 		return res.json({
