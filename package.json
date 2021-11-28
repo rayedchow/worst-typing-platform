@@ -1,5 +1,24 @@
 {
   "dependencies": {
     "express": "^4.17.1"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "worst-typing-platform",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/voomp/worst-typing-platform.git"
+  },
+  "keywords": [],
+  "author": "vamp",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/voomp/worst-typing-platform/issues"
+  },
+  "homepage": "https://github.com/voomp/worst-typing-platform#readme",
+  "description": ""
 }
