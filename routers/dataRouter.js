@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const languageRanking = ['english', 'english_5k', 'english_25k', 'english_450k'];
-const foreignLanguage = ['spanish', 'french', 'dutch', 'irish', 'italian', 'norwegian', 'portuguese', 'turkish', 'welsh'];
+const foreignLanguage = ['spanish', 'french', 'dutch', 'danish', 'irish', 'italian', 'norwegian', 'portuguese', 'turkish', 'welsh'];
 const _ = require('underscore');
 
 router.get('/getLanguageData', (req, res) => {
