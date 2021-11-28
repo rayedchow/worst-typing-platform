@@ -31,13 +31,14 @@ const onKeyPress = e => {
 	let currElem = document.getElementById(`ind-${currIndex}`);
 
 	if(code === 'Backspace') {
-		console.log(`CURR INDEX: ${currIndex}`);
-		// if(currIndex<1 || currIndex===text.length) return;
+		if(currIndex<=0) return;
+
 		currElem.classList.remove("state-curr");
 		currIndex--;
 		currElem = document.getElementById(`ind-${currIndex}`);
 		testData.typed--;
 		document.getElementById(`ind-${currIndex}`).classList.add("state-curr");
+
 		if(currElem.classList.contains("state-1")) {
 			currElem.classList.replace("state-1", "state-0");
 			testData.correct--;
@@ -45,6 +46,7 @@ const onKeyPress = e => {
 			currElem.classList.replace("state-2", "state-0");
 			testData.wrong--;
 		}
+		
 		return;
 	}
 	
