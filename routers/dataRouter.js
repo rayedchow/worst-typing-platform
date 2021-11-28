@@ -9,8 +9,8 @@ router.post('/getLanguageData', (req, res) => {
 			level,
 			data
 		});
-	} catch(error) {
-		return res.status(500).json({error});
+	} catch(err) {
+		return res.status(500).json({error: err.code});
 	}
 });
 
