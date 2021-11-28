@@ -2,7 +2,6 @@ const router = require('express').Router();
 const languageRanking = ['english', 'english_5k', 'english_25k', 'english_450k'];
 
 router.get('/getLanguageData', (req, res) => {
-	// gets lvl num (rel to typing err #)
 	const { level } = req.params;
 	try {
 		const data = require(`../languageData/${languageRanking[level]}.json`);
