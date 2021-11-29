@@ -1,5 +1,6 @@
 let currIndex = 0;
-const text = 'hello test test amogus';
+let currLevel = 0;
+let currText = '';
 const testData = {
 	testStarted: false,
 	totalTime: 10,
@@ -10,9 +11,18 @@ const testData = {
 };
 let timerInterval;
 
+const generateWords = async () => {
+	const res = await fetch(`/data/getLanguageData?level=${currLevel}&amount=5`);
+	return res.json();
+}
+
+(async () => {
+	console.log(await generateWords());
+})();
+
 const renderData = () => {
 
-	const letters = text.split('');
+	const letters = currText.split('');
 	const elementData = [`<span class="words state-0 state-curr" id="ind-0">${letters[0]}</span>`];
 
 	for(let i = 1; i < letters.length; i++) {
@@ -27,7 +37,7 @@ const onKeyPress = e => {
 	const code = e.code;
 
 	if(code !== 'Backspace' && code !== 'Space' && !code.includes("Key")) return;
-	if(currIndex >= text.length) return;
+	if(currIndex >= currText.length) return;
 
 	let currElem = document.getElementById(`ind-${currIndex}`);
 
@@ -51,7 +61,7 @@ const onKeyPress = e => {
 		return;
 	}
 	
-	if(e.key === text[currIndex]) {
+	if(e.key === currText[currIndex]) {
 		document.getElementById(`ind-${currIndex}`).classList.replace("state-0", "state-1");
 		testData.correct++;
 	}
@@ -61,13 +71,13 @@ const onKeyPress = e => {
 	}
 	
 	document.getElementById(`ind-${currIndex}`).classList.remove("state-curr");
-	if(currIndex < text.length) {
+	if(currIndex < currText.length) {
 		currIndex++;
-		if(currIndex < text.length) document.getElementById(`ind-${currIndex}`).classList.add("state-curr");
+		if(currIndex < currText.length) document.getElementById(`ind-${currIndex}`).classList.add("state-curr");
 	}
 	testData.typed++;
 
-	if(currIndex === text.length) setTimeout(() => {
+	if(currIndex === currText.length) setTimeout(() => {
 		document.getElementById("words-parent").innerHTML = '<img src="https://cdn.discordapp.com/attachments/617428794428358795/914656739985596466/congrats.png"></img>';
 		clearInterval(timerInterval);
 	}, 400);
