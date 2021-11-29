@@ -1,10 +1,10 @@
 let currIndex = 0;
 let currLevel = 0;
 let currText = '';
-const testData = {
+let testData = {
 	testStarted: false,
 	totalTime: 10,
-	total: text.length,
+	total: 0,
 	typed: 0,
 	correct: 0,
 	wrong: 0
@@ -68,6 +68,7 @@ const onKeyPress = e => {
 	else {
 		document.getElementById(`ind-${currIndex}`).classList.replace("state-0", "state-2");
 		testData.wrong++;
+		if((testData.wrong % 3) == 0) currLevel++;
 	}
 	
 	document.getElementById(`ind-${currIndex}`).classList.remove("state-curr");
