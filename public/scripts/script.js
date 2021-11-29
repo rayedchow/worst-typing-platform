@@ -75,10 +75,14 @@ const onKeyPress = e => {
 	}
 	testData.typed++;
 
-	if(currIndex === currText.length) setTimeout(() => {
-		document.getElementById("words-parent").innerHTML = '<img src="https://cdn.discordapp.com/attachments/617428794428358795/914656739985596466/congrats.png"></img>';
-		clearInterval(timerInterval);
-	}, 400);
+	if(currIndex === currText.length) {
+		currIndex = 0;
+		(async () => {
+			let data = await generateWords();
+			currText = await data.randWords.join(" ");
+			renderData();
+		})();
+	}
 	if(!testData.testStarted) startTimer();
 }
 
