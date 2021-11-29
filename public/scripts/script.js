@@ -98,6 +98,7 @@ const startTimer = () => {
 
 document.addEventListener("keydown", onKeyPress);
 (async () => {
-	currText = await generateWords();
+	let data = await generateWords();
+	currText = await data.randWords.join(" ");
 	renderData();
 })();
