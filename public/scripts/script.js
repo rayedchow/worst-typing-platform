@@ -16,12 +16,9 @@ const generateWords = async () => {
 	return res.json();
 }
 
-(async () => {
-	console.log(await generateWords());
-})();
-
 const renderData = () => {
 
+	testData.total += currText.length;
 	const letters = currText.split('');
 	const elementData = [`<span class="words state-0 state-curr" id="ind-0">${letters[0]}</span>`];
 
@@ -100,4 +97,7 @@ const startTimer = () => {
 }
 
 document.addEventListener("keydown", onKeyPress);
-renderData();
+(async () => {
+	currText = await generateWords();
+	renderData();
+})();
