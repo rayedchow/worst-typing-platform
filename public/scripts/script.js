@@ -8,6 +8,7 @@ const testData = {
 	correct: 0,
 	wrong: 0
 };
+let timerInterval;
 
 const renderData = () => {
 
@@ -65,13 +66,18 @@ const onKeyPress = e => {
 		if(currIndex < text.length) document.getElementById(`ind-${currIndex}`).classList.add("state-curr");
 	}
 	testData.typed++;
+
+	if(currIndex === text.length) setTimeout(() => {
+		document.getElementById("words-parent").innerHTML = '<img src="https://cdn.discordapp.com/attachments/617428794428358795/914656739985596466/congrats.png"></img>';
+		clearInterval(timerInterval);
+	}, 400);
 	if(!testData.testStarted) startTimer();
 }
 
 const startTimer = () => {
 	testData.testStarted = true;
 	let timeLeft = testData.totalTime;
-	const timerInterval = setInterval(() => {
+	timerInterval = setInterval(() => {
 		if(timeLeft === 0) {
 			clearInterval(timerInterval);
 			console.log(testData);
