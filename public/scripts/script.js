@@ -1,6 +1,7 @@
 let currIndex = 0;
 let currLevel = 0;
 let currText = '';
+
 let testData = {
 	testStarted: false,
 	totalTime: 15,
@@ -8,6 +9,8 @@ let testData = {
 	correct: 0,
 	wrong: 0
 };
+document.getElementById("time-left").innerText = `${testData.totalTime}s`;
+
 let timerInterval;
 
 const generateWords = async () => {
@@ -25,7 +28,6 @@ const renderData = () => {
 	}
 
 	document.getElementById("words-parent").innerHTML = elementData.join("");
-	document.getElementById("time-left").innerText = `${testData.totalTime}s`;
 }
 
 const onKeyPress = e => {
