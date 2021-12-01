@@ -93,6 +93,7 @@ const startTimer = () => {
 			currLevel = 0;
 			currIndex = 0;
 			const wpm = (testData.typed*2.8)*(testData.totalTime/60);
+			const acc = (testData.typed/testData.correct)*100;
 			// document.getElementById("wpm").innerText = 
 			(async () => {
 				let data = await generateWords();
