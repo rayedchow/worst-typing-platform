@@ -42,7 +42,6 @@ const onKeyPress = e => {
 		currElem.classList.remove("state-curr");
 		currIndex--;
 		currElem = document.getElementById(`ind-${currIndex}`);
-		testData.typed--;
 		document.getElementById(`ind-${currIndex}`).classList.add("state-curr");
 
 		if(currElem.classList.contains("state-1")) {
@@ -93,7 +92,7 @@ const startTimer = () => {
 			currLevel = 0;
 			currIndex = 0;
 			const wpm = (testData.typed*2.8)*(testData.totalTime/60);
-			const acc = (testData.typed/testData.correct)*100;
+			const acc = Math.floor((testData.correct/testData.typed)*100);
 			document.getElementById("wpm").innerText = `${wpm}wpm`;
 			document.getElementById("acc").innerHTML = `${acc}acc`;
 			(async () => {
