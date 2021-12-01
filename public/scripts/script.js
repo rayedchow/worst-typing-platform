@@ -91,10 +91,10 @@ const startTimer = () => {
 			clearInterval(timerInterval);
 			currLevel = 0;
 			currIndex = 0;
-			const wpm = (testData.typed*2.8)*(testData.totalTime/60);
+			const wpm = Math.floor((testData.typed*2.8)*(testData.totalTime/60));
 			const acc = Math.floor((testData.correct/testData.typed)*100);
 			document.getElementById("wpm").innerText = `${wpm}wpm`;
-			document.getElementById("acc").innerHTML = `${acc}acc`;
+			document.getElementById("acc").innerHTML = `${acc}%acc`;
 			(async () => {
 				let data = await generateWords();
 				currText = await data.randWords.join(" ");
