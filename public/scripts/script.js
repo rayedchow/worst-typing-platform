@@ -94,7 +94,8 @@ const startTimer = () => {
 			currIndex = 0;
 			const wpm = (testData.typed*2.8)*(testData.totalTime/60);
 			const acc = (testData.typed/testData.correct)*100;
-			// document.getElementById("wpm").innerText = 
+			document.getElementById("wpm").innerText = `${wpm}wpm`;
+			document.getElementById("acc").innerHTML = `${acc}acc`;
 			(async () => {
 				let data = await generateWords();
 				currText = await data.randWords.join(" ");
