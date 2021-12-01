@@ -92,7 +92,23 @@ const startTimer = () => {
 	timerInterval = setInterval(() => {
 		if(timeLeft === 0) {
 			clearInterval(timerInterval);
-			console.log(testData);
+			currLevel = 0;
+			currIndex = 0;
+			
+			(async () => {
+				let data = await generateWords();
+				currText = await data.randWords.join(" ");
+				renderData();
+				// resetting test data
+				testData = {
+					testStarted: false,
+					totalTime: 15,
+					total: 0,
+					typed: 0,
+					correct: 0,
+					wrong: 0
+				};
+			})();
 			return;
 		}
 		timeLeft--;
