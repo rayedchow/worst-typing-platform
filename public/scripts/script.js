@@ -3,7 +3,7 @@ let currLevel = 0;
 let currText = '';
 let testData = {
 	testStarted: false,
-	totalTime: 10,
+	totalTime: 15,
 	total: 0,
 	typed: 0,
 	correct: 0,
