@@ -12,6 +12,7 @@ let testData = {
 document.getElementById("time-left").innerText = `${testData.totalTime}s`;
 
 let timerInterval;
+let staggerKey = false;
 
 const generateWords = async () => {
 	const res = await fetch(`/data/getLanguageData?level=${currLevel}&amount=5`);
@@ -35,6 +36,10 @@ const onKeyPress = e => {
 
 	if(code !== 'Backspace' && code !== 'Space' && !code.includes("Key")) return;
 	if(currIndex >= currText.length) return;
+	if(staggerKey) {
+		staggerKey = false;
+		return;
+	}
 
 	let currElem = document.getElementById(`ind-${currIndex}`);
 
@@ -100,6 +105,7 @@ const startTimer = () => {
 			(async () => {
 				let data = await generateWords();
 				currText = await data.randWords.join(" ");
+				staggerKey = true;
 				renderData();
 				// resetting test data
 				testData = {
