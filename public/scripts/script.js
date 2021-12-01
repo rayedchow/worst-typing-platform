@@ -4,7 +4,6 @@ let currText = '';
 let testData = {
 	testStarted: false,
 	totalTime: 15,
-	total: 0,
 	typed: 0,
 	correct: 0,
 	wrong: 0
@@ -18,7 +17,6 @@ const generateWords = async () => {
 
 const renderData = () => {
 
-	testData.total += currText.length;
 	const letters = currText.split('');
 	const elementData = [`<span class="words state-0 state-curr" id="ind-0">${letters[0]}</span>`];
 
@@ -94,7 +92,8 @@ const startTimer = () => {
 			clearInterval(timerInterval);
 			currLevel = 0;
 			currIndex = 0;
-			
+			const wpm = (testData.typed*2.8)*(testData.totalTime/60);
+			// document.getElementById("wpm").innerText = 
 			(async () => {
 				let data = await generateWords();
 				currText = await data.randWords.join(" ");
@@ -103,7 +102,6 @@ const startTimer = () => {
 				testData = {
 					testStarted: false,
 					totalTime: 15,
-					total: 0,
 					typed: 0,
 					correct: 0,
 					wrong: 0
