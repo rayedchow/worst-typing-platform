@@ -2,6 +2,7 @@ let currIndex = 0;
 let currLevel = 0;
 let currText = '';
 
+// testData
 let testData = {
 	testStarted: false,
 	totalTime: 15,
