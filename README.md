@@ -6,7 +6,11 @@ The server/site is live here: [heroku](https://worst-typing-platform.herokuapp.c
 
 ## Infrastructure
 Frontend - (regular domjs, html/css)
+
+
 Backend - (expressjs)
+
+
 Both are held in one server (backend ties in both together)
 
 
